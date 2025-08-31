@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Jam",
+  "version": "0.7",
+  "description": "Collaborative browsing with auth and more features.",
+  "permissions": [ "storage", "tabs" ],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [ "socket.io.min.js", "selection-helper.js", "content.js" ]
+    }
+  ],
+  "host_permissions": ["http://localhost:3000/"],
+  "web_accessible_resources": [
+    {
+      "resources": [ "socket.io.min.js", "selection-helper.js" ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

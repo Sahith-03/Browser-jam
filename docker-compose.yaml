@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # This defines our PostgreSQL database service
+  db:
+    image: postgres:15-alpine  # Use the official Postgres image, version 15 on a lightweight OS
+    restart: always # Always restart the container if it stops
+    environment:
+      # These are the environment variables that the postgres image uses for setup
+      - POSTGRES_USER=sahithhh
+      - POSTGRES_PASSWORD=Sahith*2003
+      - POSTGRES_DB=browser_jam
+    ports:
+      # This maps port 5432 on your host machine to port 5432 in the container
+      # Format is <HOST_PORT>:<CONTAINER_PORT>
+      - '5432:5432'
+    volumes:
+      # This creates a 'named volume' to persist the database data
+      # even if you remove the container. This is crucial!
+      - postgres_data:/var/lib/postgresql/data/
+
+# This defines the named volume we referenced above
+volumes:
+  postgres_data:

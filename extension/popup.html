@@ -1,0 +1,58 @@
+<!-- extension/popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Browser Jam</title>
+    <style>
+        body { font-family: sans-serif; width: 280px; padding: 10px; text-align: center; }
+        h1, h2 { margin-top: 0; }
+        h2 { font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        input { width: 90%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #4285F4; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 14px; width: 95%; margin-top: 5px;}
+        button:hover { background-color: #357ae8; }
+        #logout-btn { background-color: #db4437; }
+        #logout-btn:hover { background-color: #c5372c; }
+        #session-info { margin-top: 15px; }
+        #session-info input { width: 95%; margin-top: 5px; padding: 5px; }
+        #error-message { color: #db4437; font-size: 12px; min-height: 15px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
+        .toggle-link { font-size: 12px; cursor: pointer; color: #007bff; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Browser Jam</h1>
+    <p id="error-message"></p>
+    
+    <!-- Logged Out View -->
+    <div id="logged-out-view">
+        <div id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button id="login-btn">Login</button>
+            <p class="toggle-link" id="show-register-form">Not registered yet? Sign up</p>
+        </div>
+        <div id="register-form" style="display: none;">
+            <h2>Register</h2>
+            <input type="email" id="register-email" placeholder="Email">
+            <input type="password" id="register-password" placeholder="Password">
+            <button id="register-btn">Register</button>
+            <p class="toggle-link" id="show-login-form">Already have an account? Log in</p>
+        </div>
+    </div>
+
+    <!-- Logged In View -->
+    <div id="logged-in-view" style="display: none;">
+        <p>Welcome, <strong id="user-email"></strong>!</p>
+        <button id="start-session-btn">Start New Session</button>
+        <div id="session-info"></div>
+        <hr>
+        <h3>My Recent Sessions</h3>
+        <div id="session-list" style="text-align: left; font-size: 13px; max-height: 150px; overflow-y: auto;"></div>
+        <hr>
+        <button id="logout-btn">Logout</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
